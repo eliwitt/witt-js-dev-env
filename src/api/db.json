@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 21370880,
+      "firstName": "Schuyler",
+      "lastName": "Keebler",
+      "email": "Timmothy.Heaney@gmail.com"
+    },
+    {
+      "id": 82680196,
+      "firstName": "Charley",
+      "lastName": "Rosenbaum",
+      "email": "Anna.Jast@gmail.com"
+    },
+    {
+      "id": 52074436,
+      "firstName": "Tracy",
+      "lastName": "Toy",
+      "email": "Nichole16@hotmail.com"
+    }
+  ]
+}
