@@ -1,16 +1,17 @@
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
     debug: true,
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     noInfo: false,
     entry: [
         path.resolve(__dirname, 'src/index')
     ],
     target: 'web',
     output: {
-        path: path.resolve(__dirname, 'src'),
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: 'bundle.js'
     },
@@ -18,10 +19,10 @@ export default {
         contentBase: path.resolve(__dirname, 'src')
     },
     plugins: [
-                // create html file that includes refer to bundled JS.
+        // create html file that includes refer to bundled JS.
        new HtmlWebpackPlugin({
-        template : 'src/index.html',
-        minify: {
+           template : 'src/index.html',
+           minify: {
             removeComments: true,
             collapseWhitespace: true,
             removeRedundantAttributes: true,
@@ -32,9 +33,13 @@ export default {
             minifyJS: true,
             minifyCSS: true,
             minifyURLs: true
-        },
-        inject: true
-        })
+          },
+           inject: true
+       }),
+        // Eliminate duplicate packages when generating bundle
+        new webpack.optimize.DedupePlugin(),
+        // Minify JS
+        new webpack.optimize.UglifyJsPlugin()
     ],
     module: {
         loaders: [
